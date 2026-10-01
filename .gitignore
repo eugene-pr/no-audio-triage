@@ -1,0 +1,17 @@
+# Dependencies and generated files
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.aws/
+
+
+# OS files
+.DS_Store
+Thumbs.db

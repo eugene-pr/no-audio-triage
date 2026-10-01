@@ -1,0 +1,6 @@
+{
+  "owner": "customer side",
+  "required_line_ids": ["L20", "L21"],
+  "forbidden_line_ids": [],
+  "suspected_cause_must_not_match": "\\bNAT\\b|private IP"
+}

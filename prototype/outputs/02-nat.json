@@ -1,0 +1,202 @@
+{
+  "call_id": "2b8d4e71-9a3c-4f10-b7e2-globex3107",
+  "timeline": [
+    {
+      "id": "L1",
+      "timestamp": "2026-09-29T14:20:00.100Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:+97237770200@198.51.100.10:5060 SIP/2.0 | From: <sip:+972529876543@192.0.2.50> | Call-ID: d9921@192.0.2.50"
+    },
+    {
+      "id": "L2",
+      "timestamp": "2026-09-29T14:20:00.101Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer from carrier: c=IN IP4 192.0.2.52 | m=audio 31044 RTP/AVP 8 0 101"
+    },
+    {
+      "id": "L3",
+      "timestamp": "2026-09-29T14:20:00.130Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 100 Trying"
+    },
+    {
+      "id": "L4",
+      "timestamp": "2026-09-29T14:20:00.380Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:3107@203.0.113.77:5060 SIP/2.0 | Call-ID: 7b2f01@198.51.100.10"
+    },
+    {
+      "id": "L5",
+      "timestamp": "2026-09-29T14:20:00.381Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer to agent: c=IN IP4 198.51.100.22 | m=audio 25012 RTP/AVP 8 0 101"
+    },
+    {
+      "id": "L6",
+      "timestamp": "2026-09-29T14:20:00.450Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 180 Ringing | User-Agent: Polycom VVX 450 6.4.3"
+    },
+    {
+      "id": "L7",
+      "timestamp": "2026-09-29T14:20:03.680Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK | Contact: <sip:3107@192.168.1.23:5060> | Received: 203.0.113.77:5060"
+    },
+    {
+      "id": "L8",
+      "timestamp": "2026-09-29T14:20:03.681Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer from agent: c=IN IP4 192.168.1.23 | m=audio 11800 RTP/AVP 8 101"
+    },
+    {
+      "id": "L9",
+      "timestamp": "2026-09-29T14:20:03.690Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "text": "[DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.22:25012 -> 192.168.1.23:11800 codec PCMA ptime 20"
+    },
+    {
+      "id": "L10",
+      "timestamp": "2026-09-29T14:20:03.700Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK | Contact: <sip:+97237770200@198.51.100.10:5060>"
+    },
+    {
+      "id": "L11",
+      "timestamp": "2026-09-29T14:20:03.701Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer to carrier: c=IN IP4 198.51.100.22 | m=audio 25010 RTP/AVP 8 101"
+    },
+    {
+      "id": "L12",
+      "timestamp": "2026-09-29T14:20:03.710Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "text": "[DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.22:25010 -> 192.0.2.52:31044 codec PCMA ptime 20"
+    },
+    {
+      "id": "L13",
+      "timestamp": "2026-09-29T14:20:03.740Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:3107@203.0.113.77:5060 SIP/2.0"
+    },
+    {
+      "id": "L14",
+      "timestamp": "2026-09-29T14:20:03.760Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:+97237770200@198.51.100.10:5060 SIP/2.0"
+    },
+    {
+      "id": "L15",
+      "timestamp": "2026-09-29T14:20:03.905Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "text": "[INFO] switch_rtp.c:7390 Auto Changing audio port from 192.168.1.23:11800 to 203.0.113.77:40112"
+    },
+    {
+      "id": "L16",
+      "timestamp": "2026-09-29T14:22:10.500Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "BYE sip:+97237770200@198.51.100.10:5060 SIP/2.0 | From: <sip:+972529876543@192.0.2.50> | Reason: Q.850;cause=16"
+    },
+    {
+      "id": "L17",
+      "timestamp": "2026-09-29T14:22:10.520Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "BYE sip:3107@203.0.113.77:5060 SIP/2.0 | Reason: caller hung up"
+    },
+    {
+      "id": "L18",
+      "timestamp": "2026-09-29T14:22:10.540Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (BYE)"
+    },
+    {
+      "id": "L19",
+      "timestamp": "2026-09-29T14:22:10.550Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (BYE)"
+    },
+    {
+      "id": "L20",
+      "timestamp": "2026-09-29T14:22:10.560Z",
+      "leg": "platform <-> agent ext 3107",
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "text": "[INFO] rtp stats leg=agent remote=203.0.113.77:40112 rtp_audio_in_packet_count=6335 rtp_audio_out_packet_count=6337 rtp_audio_in_packet_loss=1 mos=4.41"
+    },
+    {
+      "id": "L21",
+      "timestamp": "2026-09-29T14:22:10.570Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "text": "[INFO] rtp stats leg=caller rtp_audio_in_packet_count=6338 rtp_audio_out_packet_count=6336 rtp_audio_in_packet_loss=0 mos=4.40"
+    }
+  ],
+  "diagnosis": {
+    "observed": "Caller-to-agent audio is missing at the agent's end, per the complaint. Our fs-media-3 received RTP from the agent (in=6335, loss=1) and sent RTP to the agent (out=6337). It also received and sent healthy RTP on the caller leg (in=6338, out=6336). The agent's SDP had private IP 192.168.1.23:11800, but FreeSWITCH corrected it to 203.0.113.77:40112, and the agent-leg stats show that same remote. The caller leg was sent to 192.0.2.52:31044, which matches the carrier SDP. No re-INVITE appears. The agent-to-caller direction works. Packets sent by our server do not prove the agent's phone received them.",
+    "suspected_cause": "Guess: Something on the agent's side (office firewall/NAT, or the Polycom VVX 450 or its handset) is dropping or not playing the inbound RTP.",
+    "owner": "customer side",
+    "visibility_ends_at": "Our last view is fs-media-3 sending RTP to 203.0.113.77:40112, the agent's public NAT address. We cannot see whether it crossed the Globex firewall/NAT, reached the phone, or was played.",
+    "evidence": [
+      {
+        "line_id": "L8",
+        "quote": "SDP answer from agent: c=IN IP4 192.168.1.23 | m=audio 11800 RTP/AVP 8 101"
+      },
+      {
+        "line_id": "L15",
+        "quote": "Auto Changing audio port from 192.168.1.23:11800 to 203.0.113.77:40112"
+      },
+      {
+        "line_id": "L20",
+        "quote": "remote=203.0.113.77:40112 rtp_audio_in_packet_count=6335 rtp_audio_out_packet_count=6337 rtp_audio_in_packet_loss=1 mos=4.41"
+      },
+      {
+        "line_id": "L12",
+        "quote": "Starting RTP: 198.51.100.22:25010 -> 192.0.2.52:31044 codec PCMA ptime 20"
+      },
+      {
+        "line_id": "L21",
+        "quote": "rtp_audio_in_packet_count=6338 rtp_audio_out_packet_count=6336 rtp_audio_in_packet_loss=0 mos=4.40"
+      }
+    ],
+    "next_check": "Ask the Globex IT/network admin to take a packet capture at the Tel Aviv office firewall and on ext 3107 (Polycom VVX 450) for this call. They should check whether RTP from 198.51.100.22:25012 arrives at the phone, and check the phone's handset/speaker and audio settings.",
+    "missing": [
+      "Packet capture at the customer firewall or on the phone",
+      "Phone-side RTP receive stats from the Polycom VVX 450",
+      "Firewall/NAT logs for the Tel Aviv office at 14:20 UTC",
+      "Whether ext 3107 has had this problem on other calls, and which handset or headset it was using",
+      "Per-direction RTP capture on the platform side, to confirm what the wire carried"
+    ],
+    "confidence": "Moderate. This was found by ruling out. The platform and carrier are ruled out because RTP was healthy in both directions on both legs, and each stream went to the newest media address, with NAT corrected on the agent leg. We cannot tell a firewall/NAT drop from a phone or handset fault, and we have no data beyond our send."
+  },
+  "score": {
+    "pass": false,
+    "checks": {
+      "owner": "ok",
+      "evidence": "ok",
+      "required": "ok",
+      "forbidden": "ok",
+      "cause": "FAIL"
+    },
+    "reasons": [
+      "suspected cause matches /\\bNAT\\b|private IP/i: \"Guess: Something on the agent's side (office firewall/NAT, or the Polycom VVX 450 or its handset) is dropping or not playing the inbound RTP.\""
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "ticket": "Umbrella Corp: one-way audio. The caller could not hear agent ext 4502; the agent heard the caller. Call at 2026-09-29 16:40 UTC.",
+  "call_id": "5e02a7c8-1d44-4b39-a0f7-umbrella4502",
+  "sources": [
+    {
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "leg": "caller <-> platform (carrier trunk)",
+      "lines": [
+        "2026-09-29T16:40:00.080Z INVITE sip:+97236660400@198.51.100.10:5060 SIP/2.0 | From: <sip:+972547778899@192.0.2.50> | Call-ID: f7710@192.0.2.50",
+        "2026-09-29T16:40:00.081Z SDP offer from carrier: c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101",
+        "2026-09-29T16:40:00.110Z SIP/2.0 100 Trying",
+        "2026-09-29T16:40:05.300Z SIP/2.0 200 OK | Contact: <sip:+97236660400@198.51.100.10:5060>",
+        "2026-09-29T16:40:05.301Z SDP answer to carrier: c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101",
+        "2026-09-29T16:40:05.360Z ACK sip:+97236660400@198.51.100.10:5060 SIP/2.0",
+        "2026-09-29T16:43:05.200Z BYE sip:+972547778899@192.0.2.50 SIP/2.0 | Reason: agent hung up",
+        "2026-09-29T16:43:05.240Z SIP/2.0 200 OK (BYE)"
+      ]
+    },
+    {
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "leg": "platform <-> agent ext 4502",
+      "lines": [
+        "2026-09-29T16:40:00.300Z INVITE sip:4502@203.0.113.90:5060 SIP/2.0 | Call-ID: 3cd902@198.51.100.10",
+        "2026-09-29T16:40:00.301Z SDP offer to agent: c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101",
+        "2026-09-29T16:40:00.370Z SIP/2.0 180 Ringing | User-Agent: Grandstream GXP2170 1.0.11.23",
+        "2026-09-29T16:40:05.280Z SIP/2.0 200 OK | Contact: <sip:4502@203.0.113.90:5060>",
+        "2026-09-29T16:40:05.281Z SDP answer from agent: c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101",
+        "2026-09-29T16:40:05.340Z ACK sip:4502@203.0.113.90:5060 SIP/2.0",
+        "2026-09-29T16:43:05.180Z BYE sip:+97236660400@198.51.100.10:5060 SIP/2.0 | From: <sip:4502@umbrella.example> | Reason: agent hung up",
+        "2026-09-29T16:43:05.220Z SIP/2.0 200 OK (BYE)"
+      ]
+    },
+    {
+      "capture_point": "FreeSWITCH fs-media-1 (198.51.100.20)",
+      "leg": "caller <-> platform (carrier trunk)",
+      "lines": [
+        "2026-09-29T16:40:00.250Z [INFO] mod_dptools.c:1560 EXECUTE [depth=0] sofia/external/+972547778899@192.0.2.50 set(bypass_media=true)",
+        "2026-09-29T16:40:00.260Z [INFO] mod_dptools.c:1560 EXECUTE [depth=0] sofia/external/+972547778899@192.0.2.50 bridge(sofia/internal/4502@203.0.113.90)",
+        "2026-09-29T16:43:05.260Z [NOTICE] switch_core_state_machine.c:772 Hangup sofia/external/+972547778899@192.0.2.50 [CS_EXCHANGE_MEDIA] [NORMAL_CLEARING]"
+      ]
+    }
+  ]
+}

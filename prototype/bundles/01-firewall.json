@@ -1,0 +1,51 @@
+{
+  "ticket": "Acme Corp (Haifa branch): since the office firewall was replaced on Monday, agents can't hear callers. Callers hear the agents fine. Other branches OK. Example: call to agent ext 2041 at 2026-09-29 10:00 UTC.",
+  "call_id": "7f3c9a12-4b8e-4d21-9c55-acme2041",
+  "sources": [
+    {
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "leg": "caller <-> platform (carrier trunk)",
+      "lines": [
+        "2026-09-29T10:00:00.112Z INVITE sip:+97235550100@198.51.100.10:5060 SIP/2.0 | From: <sip:+972541234567@192.0.2.50> | Call-ID: c8812@192.0.2.50",
+        "2026-09-29T10:00:00.113Z SDP offer from carrier: c=IN IP4 192.0.2.51 | m=audio 30012 RTP/AVP 8 0 101",
+        "2026-09-29T10:00:00.140Z SIP/2.0 100 Trying",
+        "2026-09-29T10:00:04.905Z SIP/2.0 200 OK | Contact: <sip:+97235550100@198.51.100.10:5060>",
+        "2026-09-29T10:00:04.906Z SDP answer to carrier: c=IN IP4 198.51.100.21 | m=audio 24680 RTP/AVP 8 101",
+        "2026-09-29T10:00:04.980Z ACK sip:+97235550100@198.51.100.10:5060 SIP/2.0",
+        "2026-09-29T10:01:07.311Z BYE sip:+972541234567@192.0.2.50 SIP/2.0 | Reason: Q.850;cause=16",
+        "2026-09-29T10:01:07.350Z SIP/2.0 200 OK (BYE)"
+      ]
+    },
+    {
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "leg": "platform <-> agent ext 2041",
+      "lines": [
+        "2026-09-29T10:00:00.402Z INVITE sip:2041@203.0.113.45:5062 SIP/2.0 | Call-ID: 5a1e77@198.51.100.10",
+        "2026-09-29T10:00:00.403Z SDP offer to agent: c=IN IP4 198.51.100.21 | m=audio 24682 RTP/AVP 8 0 101",
+        "2026-09-29T10:00:00.460Z SIP/2.0 180 Ringing | User-Agent: Yealink SIP-T54W 96.86.0.70",
+        "2026-09-29T10:00:04.880Z SIP/2.0 200 OK | Contact: <sip:2041@203.0.113.45:5062>",
+        "2026-09-29T10:00:04.881Z SDP answer from agent: c=IN IP4 203.0.113.45 | m=audio 16420 RTP/AVP 8 101",
+        "2026-09-29T10:00:04.950Z ACK sip:2041@203.0.113.45:5062 SIP/2.0",
+        "2026-09-29T10:01:07.290Z BYE sip:+97235550100@198.51.100.10:5060 SIP/2.0 | From: <sip:2041@acme.example> | Reason: agent hung up",
+        "2026-09-29T10:01:07.330Z SIP/2.0 200 OK (BYE)"
+      ]
+    },
+    {
+      "capture_point": "FreeSWITCH fs-media-2 (198.51.100.21)",
+      "leg": "caller <-> platform (carrier trunk)",
+      "lines": [
+        "2026-09-29T10:00:04.910Z [DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.21:24680 -> 192.0.2.51:30012 codec PCMA ptime 20",
+        "2026-09-29T10:01:07.360Z [INFO] rtp stats leg=caller rtp_audio_in_packet_count=3118 rtp_audio_out_packet_count=3120 rtp_audio_in_packet_loss=2 mos=4.40"
+      ]
+    },
+    {
+      "capture_point": "FreeSWITCH fs-media-2 (198.51.100.21)",
+      "leg": "platform <-> agent ext 2041",
+      "lines": [
+        "2026-09-29T10:00:04.890Z [DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.21:24682 -> 203.0.113.45:16420 codec PCMA ptime 20",
+        "2026-09-29T10:00:05.012Z [DEBUG] switch_rtp.c:7412 First audio packet from 203.0.113.45:16420, remote address confirmed",
+        "2026-09-29T10:01:07.365Z [INFO] rtp stats leg=agent rtp_audio_in_packet_count=3115 rtp_audio_out_packet_count=3119 rtp_audio_in_packet_loss=0 mos=4.40"
+      ]
+    }
+  ]
+}

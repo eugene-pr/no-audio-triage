@@ -1,0 +1,184 @@
+{
+  "call_id": "5e02a7c8-1d44-4b39-a0f7-umbrella4502",
+  "timeline": [
+    {
+      "id": "L1",
+      "timestamp": "2026-09-29T16:40:00.080Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:+97236660400@198.51.100.10:5060 SIP/2.0 | From: <sip:+972547778899@192.0.2.50> | Call-ID: f7710@192.0.2.50"
+    },
+    {
+      "id": "L2",
+      "timestamp": "2026-09-29T16:40:00.081Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer from carrier: c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101"
+    },
+    {
+      "id": "L3",
+      "timestamp": "2026-09-29T16:40:00.110Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 100 Trying"
+    },
+    {
+      "id": "L4",
+      "timestamp": "2026-09-29T16:40:00.250Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-1 (198.51.100.20)",
+      "text": "[INFO] mod_dptools.c:1560 EXECUTE [depth=0] sofia/external/+972547778899@192.0.2.50 set(bypass_media=true)"
+    },
+    {
+      "id": "L5",
+      "timestamp": "2026-09-29T16:40:00.260Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-1 (198.51.100.20)",
+      "text": "[INFO] mod_dptools.c:1560 EXECUTE [depth=0] sofia/external/+972547778899@192.0.2.50 bridge(sofia/internal/4502@203.0.113.90)"
+    },
+    {
+      "id": "L6",
+      "timestamp": "2026-09-29T16:40:00.300Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:4502@203.0.113.90:5060 SIP/2.0 | Call-ID: 3cd902@198.51.100.10"
+    },
+    {
+      "id": "L7",
+      "timestamp": "2026-09-29T16:40:00.301Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer to agent: c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101"
+    },
+    {
+      "id": "L8",
+      "timestamp": "2026-09-29T16:40:00.370Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 180 Ringing | User-Agent: Grandstream GXP2170 1.0.11.23"
+    },
+    {
+      "id": "L9",
+      "timestamp": "2026-09-29T16:40:05.280Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK | Contact: <sip:4502@203.0.113.90:5060>"
+    },
+    {
+      "id": "L10",
+      "timestamp": "2026-09-29T16:40:05.281Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer from agent: c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101"
+    },
+    {
+      "id": "L11",
+      "timestamp": "2026-09-29T16:40:05.300Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK | Contact: <sip:+97236660400@198.51.100.10:5060>"
+    },
+    {
+      "id": "L12",
+      "timestamp": "2026-09-29T16:40:05.301Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer to carrier: c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101"
+    },
+    {
+      "id": "L13",
+      "timestamp": "2026-09-29T16:40:05.340Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:4502@203.0.113.90:5060 SIP/2.0"
+    },
+    {
+      "id": "L14",
+      "timestamp": "2026-09-29T16:40:05.360Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:+97236660400@198.51.100.10:5060 SIP/2.0"
+    },
+    {
+      "id": "L15",
+      "timestamp": "2026-09-29T16:43:05.180Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "BYE sip:+97236660400@198.51.100.10:5060 SIP/2.0 | From: <sip:4502@umbrella.example> | Reason: agent hung up"
+    },
+    {
+      "id": "L16",
+      "timestamp": "2026-09-29T16:43:05.200Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "BYE sip:+972547778899@192.0.2.50 SIP/2.0 | Reason: agent hung up"
+    },
+    {
+      "id": "L17",
+      "timestamp": "2026-09-29T16:43:05.220Z",
+      "leg": "platform <-> agent ext 4502",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (BYE)"
+    },
+    {
+      "id": "L18",
+      "timestamp": "2026-09-29T16:43:05.240Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (BYE)"
+    },
+    {
+      "id": "L19",
+      "timestamp": "2026-09-29T16:43:05.260Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-1 (198.51.100.20)",
+      "text": "[NOTICE] switch_core_state_machine.c:772 Hangup sofia/external/+972547778899@192.0.2.50 [CS_EXCHANGE_MEDIA] [NORMAL_CLEARING]"
+    }
+  ],
+  "diagnosis": {
+    "observed": "Caller could not hear agent; agent heard caller (per ticket). The timeline has no RTP or RTCP data, so no audio direction was seen at any capture point. Media was set up as direct (bypass_media=true). Carrier offered 192.0.2.53:32010 and the agent answered 203.0.113.90:18000. We relayed both unchanged to the other leg (PCMA 8 plus 101). No re-INVITE. Call lasted about 3 minutes.",
+    "suspected_cause": "Guess: the agent-to-carrier stream (203.0.113.90:18000 to 192.0.2.53:32010) is not sent or is blocked, either by the agent's phone/firewall or at the carrier's media endpoint.",
+    "owner": "unknown",
+    "visibility_ends_at": "SIP/SDP signaling at the edge SBC (answer sent to carrier at 16:40:05.301). We cannot see any RTP, so we cannot tell whether the agent phone sent audio or whether carrier endpoint 192.0.2.53 received it.",
+    "evidence": [
+      {
+        "line_id": "L4",
+        "quote": "set(bypass_media=true)"
+      },
+      {
+        "line_id": "L2",
+        "quote": "c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101"
+      },
+      {
+        "line_id": "L10",
+        "quote": "c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101"
+      },
+      {
+        "line_id": "L12",
+        "quote": "c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101"
+      },
+      {
+        "line_id": "L7",
+        "quote": "c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101"
+      }
+    ],
+    "next_check": "Our network/VoIP engineer: get a packet capture or carrier-side RTP logs for 203.0.113.90:18000 and 192.0.2.53:32010 for this call. Ask Umbrella Corp IT to check the GXP2170 and firewall allow outbound UDP to 192.0.2.53:32010. Ask the carrier whether it received RTP from 203.0.113.90.",
+    "missing": [
+      "RTP/RTCP stats or pcap from the agent phone, customer firewall, or carrier",
+      "Carrier media logs for 192.0.2.53:32010",
+      "Phone-side logs of packets sent"
+    ],
+    "confidence": "Low to medium. SDP addresses are public and consistent on both legs and the codec matched, so a platform signaling or NAT error looks unlikely. Because media bypasses our servers, missing RTP in our data is expected. Customer side and carrier cannot be separated with the data we hold."
+  },
+  "score": {
+    "pass": true,
+    "checks": {
+      "owner": "ok",
+      "evidence": "ok",
+      "required": "ok",
+      "forbidden": "ok",
+      "cause": "-"
+    },
+    "reasons": []
+  }
+}

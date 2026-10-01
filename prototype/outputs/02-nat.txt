@@ -1,0 +1,53 @@
+TRIAGE NOTE (internal) - call 2b8d4e71-9a3c-4f10-b7e2-globex3107
+Evidence check: passed
+
+SUMMARY
+  Owner:              customer side
+  Suspected cause:    Guess: Something on the agent's side (office firewall/NAT, or the Polycom VVX
+                      450 or its handset) is dropping or not playing the inbound RTP.
+  Confidence:         Moderate. This was found by ruling out. The platform and carrier are ruled out
+                      because RTP was healthy in both directions on both legs, and each stream went
+                      to the newest media address, with NAT corrected on the agent leg. We cannot
+                      tell a firewall/NAT drop from a phone or handset fault, and we have no data
+                      beyond our send.
+
+NEXT STEP
+  Ask the Globex IT/network admin to take a packet capture at the Tel Aviv office firewall and on
+  ext 3107 (Polycom VVX 450) for this call. They should check whether RTP from 198.51.100.22:25012
+  arrives at the phone, and check the phone's handset/speaker and audio settings.
+
+FINDINGS
+  Observed:           Caller-to-agent audio is missing at the agent's end, per the complaint. Our
+                      fs-media-3 received RTP from the agent (in=6335, loss=1) and sent RTP to the
+                      agent (out=6337). It also received and sent healthy RTP on the caller leg
+                      (in=6338, out=6336). The agent's SDP had private IP 192.168.1.23:11800, but
+                      FreeSWITCH corrected it to 203.0.113.77:40112, and the agent-leg stats show
+                      that same remote. The caller leg was sent to 192.0.2.52:31044, which matches
+                      the carrier SDP. No re-INVITE appears. The agent-to-caller direction works.
+                      Packets sent by our server do not prove the agent's phone received them.
+  Visibility ends at: Our last view is fs-media-3 sending RTP to 203.0.113.77:40112, the agent's
+                      public NAT address. We cannot see whether it crossed the Globex firewall/NAT,
+                      reached the phone, or was played.
+
+EVIDENCE
+  L8  platform <-> agent ext 3107 @ homer (edge SBC 198.51.100.10), 2026-09-29T14:20:03.681Z
+      "SDP answer from agent: c=IN IP4 192.168.1.23 | m=audio 11800 RTP/AVP 8 101"
+  L15 platform <-> agent ext 3107 @ FreeSWITCH fs-media-3 (198.51.100.22), 2026-09-29T14:20:03.905Z
+      "Auto Changing audio port from 192.168.1.23:11800 to 203.0.113.77:40112"
+  L20 platform <-> agent ext 3107 @ FreeSWITCH fs-media-3 (198.51.100.22), 2026-09-29T14:22:10.560Z
+      "remote=203.0.113.77:40112 rtp_audio_in_packet_count=6335 rtp_audio_out_packet_count=6337 rtp_audio_in_packet_loss=1 mos=4.41"
+  L12 caller <-> platform (carrier trunk) @ FreeSWITCH fs-media-3 (198.51.100.22), 2026-09-29T14:20:03.710Z
+      "Starting RTP: 198.51.100.22:25010 -> 192.0.2.52:31044 codec PCMA ptime 20"
+  L21 caller <-> platform (carrier trunk) @ FreeSWITCH fs-media-3 (198.51.100.22), 2026-09-29T14:22:10.570Z
+      "rtp_audio_in_packet_count=6338 rtp_audio_out_packet_count=6336 rtp_audio_in_packet_loss=0 mos=4.40"
+
+MISSING
+  - Packet capture at the customer firewall or on the phone
+  - Phone-side RTP receive stats from the Polycom VVX 450
+  - Firewall/NAT logs for the Tel Aviv office at 14:20 UTC
+  - Whether ext 3107 has had this problem on other calls, and which handset or headset it was using
+  - Per-direction RTP capture on the platform side, to confirm what the wire carried
+
+Links (simulated placeholders):
+  Homer:    https://homer.example.internal/call/2b8d4e71-9a3c-4f10-b7e2-globex3107
+  Raw logs: https://logs.example.internal/calls/2b8d4e71-9a3c-4f10-b7e2-globex3107

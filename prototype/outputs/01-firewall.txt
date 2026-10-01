@@ -1,0 +1,55 @@
+TRIAGE NOTE (internal) - call 7f3c9a12-4b8e-4d21-9c55-acme2041
+Evidence check: passed
+
+SUMMARY
+  Owner:              customer side
+  Suspected cause:    Guess: Acme's new Haifa firewall is dropping inbound RTP from 198.51.100.21 to
+                      the agent phone.
+  Confidence:         Medium-high. Found by ruling out: our server received and sent healthy RTP
+                      both ways, and sent each stream to the address and port in that leg's newest
+                      SDP, so platform and carrier are ruled out. The firewall as the specific cause
+                      is inferred from the ticket timing (Monday replacement, only Haifa affected),
+                      not proven by data.
+
+NEXT STEP
+  Ask Acme's network admin (Haifa) to check the new firewall for dropped inbound UDP from
+  198.51.100.21 to 203.0.113.45 (ports 16420 in this call). They should check SIP ALG, the UDP
+  session timeout and the RTP port range rules. Ask them to run a packet capture on the phone's LAN
+  side during a test call to ext 2041.
+
+FINDINGS
+  Observed:           Agent-to-caller audio is present: fs-media-2 received 3115 packets from the
+                      agent (0 loss) and sent 3118+ to the caller side, and the caller hears the
+                      agent. Caller-to-agent audio is the missing direction. fs-media-2 received
+                      3118 packets from the caller and sent 3119 to the agent at 203.0.113.45:16420,
+                      which is the address and port in the agent's SDP answer. No NAT correction was
+                      needed because the SDP IP is public, and there is no mismatch line. Our data
+                      cannot show whether the agent phone received those packets.
+  Visibility ends at: fs-media-2 (198.51.100.21) egress toward 203.0.113.45:16420. We cannot see
+                      whether the packets crossed the Acme firewall or reached the Yealink phone, or
+                      whether the phone played them.
+
+EVIDENCE
+  L8  platform <-> agent ext 2041 @ homer (edge SBC 198.51.100.10), 2026-09-29T10:00:04.881Z
+      "c=IN IP4 203.0.113.45 | m=audio 16420 RTP/AVP 8 101"
+  L9  platform <-> agent ext 2041 @ FreeSWITCH fs-media-2 (198.51.100.21), 2026-09-29T10:00:04.890Z
+      "Starting RTP: 198.51.100.21:24682 -> 203.0.113.45:16420 codec PCMA ptime 20"
+  L15 platform <-> agent ext 2041 @ FreeSWITCH fs-media-2 (198.51.100.21), 2026-09-29T10:00:05.012Z
+      "First audio packet from 203.0.113.45:16420, remote address confirmed"
+  L20 caller <-> platform (carrier trunk) @ FreeSWITCH fs-media-2 (198.51.100.21), 2026-09-29T10:01:07.360Z
+      "rtp_audio_in_packet_count=3118 rtp_audio_out_packet_count=3120"
+  L21 platform <-> agent ext 2041 @ FreeSWITCH fs-media-2 (198.51.100.21), 2026-09-29T10:01:07.365Z
+      "rtp_audio_in_packet_count=3115 rtp_audio_out_packet_count=3119"
+  L12 caller <-> platform (carrier trunk) @ FreeSWITCH fs-media-2 (198.51.100.21), 2026-09-29T10:00:04.910Z
+      "Starting RTP: 198.51.100.21:24680 -> 192.0.2.51:30012 codec PCMA ptime 20"
+
+MISSING
+  - Packet capture on the Acme LAN or firewall showing whether inbound RTP arrives
+  - Firewall logs or rules for the Haifa site
+  - Phone-side RTP statistics for ext 2041 (packets received)
+  - Other Haifa calls to compare, to confirm the pattern is site-wide
+  - Confirmation that the firewall change is the only change
+
+Links (simulated placeholders):
+  Homer:    https://homer.example.internal/call/7f3c9a12-4b8e-4d21-9c55-acme2041
+  Raw logs: https://logs.example.internal/calls/7f3c9a12-4b8e-4d21-9c55-acme2041

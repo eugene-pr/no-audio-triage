@@ -1,0 +1,51 @@
+{
+  "ticket": "Globex (Tel Aviv office): agent ext 3107 could not hear the caller on a call at 2026-09-29 14:20 UTC. The caller heard the agent fine. Other agents in the same office had no audio problems that day.",
+  "call_id": "2b8d4e71-9a3c-4f10-b7e2-globex3107",
+  "sources": [
+    {
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "leg": "caller <-> platform (carrier trunk)",
+      "lines": [
+        "2026-09-29T14:20:00.100Z INVITE sip:+97237770200@198.51.100.10:5060 SIP/2.0 | From: <sip:+972529876543@192.0.2.50> | Call-ID: d9921@192.0.2.50",
+        "2026-09-29T14:20:00.101Z SDP offer from carrier: c=IN IP4 192.0.2.52 | m=audio 31044 RTP/AVP 8 0 101",
+        "2026-09-29T14:20:00.130Z SIP/2.0 100 Trying",
+        "2026-09-29T14:20:03.700Z SIP/2.0 200 OK | Contact: <sip:+97237770200@198.51.100.10:5060>",
+        "2026-09-29T14:20:03.701Z SDP answer to carrier: c=IN IP4 198.51.100.22 | m=audio 25010 RTP/AVP 8 101",
+        "2026-09-29T14:20:03.760Z ACK sip:+97237770200@198.51.100.10:5060 SIP/2.0",
+        "2026-09-29T14:22:10.500Z BYE sip:+97237770200@198.51.100.10:5060 SIP/2.0 | From: <sip:+972529876543@192.0.2.50> | Reason: Q.850;cause=16",
+        "2026-09-29T14:22:10.540Z SIP/2.0 200 OK (BYE)"
+      ]
+    },
+    {
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "leg": "platform <-> agent ext 3107",
+      "lines": [
+        "2026-09-29T14:20:00.380Z INVITE sip:3107@203.0.113.77:5060 SIP/2.0 | Call-ID: 7b2f01@198.51.100.10",
+        "2026-09-29T14:20:00.381Z SDP offer to agent: c=IN IP4 198.51.100.22 | m=audio 25012 RTP/AVP 8 0 101",
+        "2026-09-29T14:20:00.450Z SIP/2.0 180 Ringing | User-Agent: Polycom VVX 450 6.4.3",
+        "2026-09-29T14:20:03.680Z SIP/2.0 200 OK | Contact: <sip:3107@192.168.1.23:5060> | Received: 203.0.113.77:5060",
+        "2026-09-29T14:20:03.681Z SDP answer from agent: c=IN IP4 192.168.1.23 | m=audio 11800 RTP/AVP 8 101",
+        "2026-09-29T14:20:03.740Z ACK sip:3107@203.0.113.77:5060 SIP/2.0",
+        "2026-09-29T14:22:10.520Z BYE sip:3107@203.0.113.77:5060 SIP/2.0 | Reason: caller hung up",
+        "2026-09-29T14:22:10.550Z SIP/2.0 200 OK (BYE)"
+      ]
+    },
+    {
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "leg": "caller <-> platform (carrier trunk)",
+      "lines": [
+        "2026-09-29T14:20:03.710Z [DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.22:25010 -> 192.0.2.52:31044 codec PCMA ptime 20",
+        "2026-09-29T14:22:10.570Z [INFO] rtp stats leg=caller rtp_audio_in_packet_count=6338 rtp_audio_out_packet_count=6336 rtp_audio_in_packet_loss=0 mos=4.40"
+      ]
+    },
+    {
+      "capture_point": "FreeSWITCH fs-media-3 (198.51.100.22)",
+      "leg": "platform <-> agent ext 3107",
+      "lines": [
+        "2026-09-29T14:20:03.690Z [DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.22:25012 -> 192.168.1.23:11800 codec PCMA ptime 20",
+        "2026-09-29T14:20:03.905Z [INFO] switch_rtp.c:7390 Auto Changing audio port from 192.168.1.23:11800 to 203.0.113.77:40112",
+        "2026-09-29T14:22:10.560Z [INFO] rtp stats leg=agent remote=203.0.113.77:40112 rtp_audio_in_packet_count=6335 rtp_audio_out_packet_count=6337 rtp_audio_in_packet_loss=1 mos=4.41"
+      ]
+    }
+  ]
+}

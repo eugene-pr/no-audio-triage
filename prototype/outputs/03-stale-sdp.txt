@@ -1,0 +1,53 @@
+TRIAGE NOTE (internal) - call c41e0b93-77d2-4a8f-8e61-initech2215
+Evidence check: passed
+
+SUMMARY
+  Owner:              platform
+  Suspected cause:    Guess: fs-media-4 did not update the agent-leg RTP destination after the
+                      transfer re-INVITE and kept sending to old port 5000 instead of 6200.
+  Confidence:         Fairly high. L21 shows a direct mismatch between the send port (5000) and the
+                      newest SDP port (6200), and the cause fits the one-way symptom. The re-INVITE
+                      log line (L19) mentions only the codec, so the reason the port was not updated
+                      is still a guess. There is no NAT problem: the PBX address is public and RTP
+                      is received from it.
+
+NEXT STEP
+  Platform media engineer: on fs-media-4, check why the sofia re-INVITE handling for this call
+  (Call-ID 91ac3e@198.51.100.10) left the RTP remote port at 5000. Look at the switch_rtp
+  remote-address update and any media-bypass or re-INVITE settings. Then repeat a transfer test and
+  confirm the stats show sending_to port 6200.
+
+FINDINGS
+  Observed:           After the 10:04:12 transfer re-INVITE, Initech PBX offered a new media port:
+                      203.0.113.60:6200 (L16). We answered with 198.51.100.23:26002 (L18). At
+                      10:05:00, fs-media-4 was still sending agent-leg RTP to 203.0.113.60:5000, the
+                      pre-transfer port. It was receiving from 203.0.113.60:6200, so agent-to-caller
+                      audio arrives and is forwarded, which matches the caller hearing the agent.
+                      The caller leg shows RTP in both directions with low loss and MOS 4.39. No
+                      line shows caller audio sent to port 6200.
+  Visibility ends at: fs-media-4 send and receive counters on the agent leg, at 10:05:00. We cannot
+                      see whether Initech's PBX received or played the packets sent to port 5000, or
+                      what happens inside the PBX after that. We have no capture on the Initech
+                      side.
+
+EVIDENCE
+  L8  platform <-> Initech PBX (agents) @ homer (edge SBC 198.51.100.10), 2026-09-29T10:00:03.201Z
+      "m=audio 5000 RTP/AVP 8 101"
+  L16 platform <-> Initech PBX (agents) @ homer (edge SBC 198.51.100.10), 2026-09-29T10:04:12.401Z
+      "c=IN IP4 203.0.113.60 | m=audio 6200 RTP/AVP 8 101"
+  L19 platform <-> Initech PBX (agents) @ FreeSWITCH fs-media-4 (198.51.100.23), 2026-09-29T10:04:12.460Z
+      "re-INVITE processed, codec PCMA unchanged"
+  L21 platform <-> Initech PBX (agents) @ FreeSWITCH fs-media-4 (198.51.100.23), 2026-09-29T10:05:00.000Z
+      "sending_to=203.0.113.60:5000 rtp_audio_out_packet_count=3000 receiving_from=203.0.113.60:6200"
+  L26 caller <-> platform (carrier trunk) @ FreeSWITCH fs-media-4 (198.51.100.23), 2026-09-29T10:06:30.130Z
+      "rtp_audio_in_packet_count=19340 rtp_audio_out_packet_count=19338"
+
+MISSING
+  - Any switch_rtp log line at 10:04:12 showing the remote RTP address being updated or refused
+  - A packet capture on fs-media-4 or the Initech PBX showing where caller audio went after 10:04:12
+  - The full FreeSWITCH sofia channel variables and SDP handling for the agent leg
+  - Whether other Initech transfers fail the same way
+
+Links (simulated placeholders):
+  Homer:    https://homer.example.internal/call/c41e0b93-77d2-4a8f-8e61-initech2215
+  Raw logs: https://logs.example.internal/calls/c41e0b93-77d2-4a8f-8e61-initech2215

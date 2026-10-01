@@ -1,0 +1,49 @@
+TRIAGE NOTE (internal) - call 5e02a7c8-1d44-4b39-a0f7-umbrella4502
+Evidence check: passed
+
+SUMMARY
+  Owner:              unknown
+  Suspected cause:    Guess: the agent-to-carrier stream (203.0.113.90:18000 to 192.0.2.53:32010) is
+                      not sent or is blocked, either by the agent's phone/firewall or at the
+                      carrier's media endpoint.
+  Confidence:         Low to medium. SDP addresses are public and consistent on both legs and the
+                      codec matched, so a platform signaling or NAT error looks unlikely. Because
+                      media bypasses our servers, missing RTP in our data is expected. Customer side
+                      and carrier cannot be separated with the data we hold.
+
+NEXT STEP
+  Our network/VoIP engineer: get a packet capture or carrier-side RTP logs for 203.0.113.90:18000
+  and 192.0.2.53:32010 for this call. Ask Umbrella Corp IT to check the GXP2170 and firewall allow
+  outbound UDP to 192.0.2.53:32010. Ask the carrier whether it received RTP from 203.0.113.90.
+
+FINDINGS
+  Observed:           Caller could not hear agent; agent heard caller (per ticket). The timeline has
+                      no RTP or RTCP data, so no audio direction was seen at any capture point.
+                      Media was set up as direct (bypass_media=true). Carrier offered
+                      192.0.2.53:32010 and the agent answered 203.0.113.90:18000. We relayed both
+                      unchanged to the other leg (PCMA 8 plus 101). No re-INVITE. Call lasted about
+                      3 minutes.
+  Visibility ends at: SIP/SDP signaling at the edge SBC (answer sent to carrier at 16:40:05.301). We
+                      cannot see any RTP, so we cannot tell whether the agent phone sent audio or
+                      whether carrier endpoint 192.0.2.53 received it.
+
+EVIDENCE
+  L4  caller <-> platform (carrier trunk) @ FreeSWITCH fs-media-1 (198.51.100.20), 2026-09-29T16:40:00.250Z
+      "set(bypass_media=true)"
+  L2  caller <-> platform (carrier trunk) @ homer (edge SBC 198.51.100.10), 2026-09-29T16:40:00.081Z
+      "c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101"
+  L10 platform <-> agent ext 4502 @ homer (edge SBC 198.51.100.10), 2026-09-29T16:40:05.281Z
+      "c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101"
+  L12 caller <-> platform (carrier trunk) @ homer (edge SBC 198.51.100.10), 2026-09-29T16:40:05.301Z
+      "c=IN IP4 203.0.113.90 | m=audio 18000 RTP/AVP 8 101"
+  L7  platform <-> agent ext 4502 @ homer (edge SBC 198.51.100.10), 2026-09-29T16:40:00.301Z
+      "c=IN IP4 192.0.2.53 | m=audio 32010 RTP/AVP 8 0 101"
+
+MISSING
+  - RTP/RTCP stats or pcap from the agent phone, customer firewall, or carrier
+  - Carrier media logs for 192.0.2.53:32010
+  - Phone-side logs of packets sent
+
+Links (simulated placeholders):
+  Homer:    https://homer.example.internal/call/5e02a7c8-1d44-4b39-a0f7-umbrella4502
+  Raw logs: https://logs.example.internal/calls/5e02a7c8-1d44-4b39-a0f7-umbrella4502

@@ -1,0 +1,241 @@
+{
+  "call_id": "c41e0b93-77d2-4a8f-8e61-initech2215",
+  "timeline": [
+    {
+      "id": "L1",
+      "timestamp": "2026-09-29T10:00:00.090Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:+97239990300@198.51.100.10:5060 SIP/2.0 | From: <sip:+972501112233@192.0.2.50> | Call-ID: e4410@192.0.2.50"
+    },
+    {
+      "id": "L2",
+      "timestamp": "2026-09-29T10:00:00.091Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer from carrier: c=IN IP4 192.0.2.54 | m=audio 33020 RTP/AVP 8 0 101"
+    },
+    {
+      "id": "L3",
+      "timestamp": "2026-09-29T10:00:00.120Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 100 Trying"
+    },
+    {
+      "id": "L4",
+      "timestamp": "2026-09-29T10:00:00.300Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:2210@203.0.113.60:5060 SIP/2.0 | Call-ID: 91ac3e@198.51.100.10"
+    },
+    {
+      "id": "L5",
+      "timestamp": "2026-09-29T10:00:00.301Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer to Initech PBX: c=IN IP4 198.51.100.23 | m=audio 26002 RTP/AVP 8 0 101"
+    },
+    {
+      "id": "L6",
+      "timestamp": "2026-09-29T10:00:00.350Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 180 Ringing | User-Agent: Asterisk PBX 20.5.0"
+    },
+    {
+      "id": "L7",
+      "timestamp": "2026-09-29T10:00:03.200Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK | Contact: <sip:2210@203.0.113.60:5060>"
+    },
+    {
+      "id": "L8",
+      "timestamp": "2026-09-29T10:00:03.201Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer from Initech PBX: c=IN IP4 203.0.113.60 | m=audio 5000 RTP/AVP 8 101 | o=- 1001 1001 IN IP4 203.0.113.60"
+    },
+    {
+      "id": "L9",
+      "timestamp": "2026-09-29T10:00:03.210Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "FreeSWITCH fs-media-4 (198.51.100.23)",
+      "text": "[DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.23:26002 -> 203.0.113.60:5000 codec PCMA ptime 20"
+    },
+    {
+      "id": "L10",
+      "timestamp": "2026-09-29T10:00:03.220Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK | Contact: <sip:+97239990300@198.51.100.10:5060>"
+    },
+    {
+      "id": "L11",
+      "timestamp": "2026-09-29T10:00:03.221Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer to carrier: c=IN IP4 198.51.100.23 | m=audio 26000 RTP/AVP 8 101"
+    },
+    {
+      "id": "L12",
+      "timestamp": "2026-09-29T10:00:03.230Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-4 (198.51.100.23)",
+      "text": "[DEBUG] switch_rtp.c:2831 Starting RTP: 198.51.100.23:26000 -> 192.0.2.54:33020 codec PCMA ptime 20"
+    },
+    {
+      "id": "L13",
+      "timestamp": "2026-09-29T10:00:03.260Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:2210@203.0.113.60:5060 SIP/2.0"
+    },
+    {
+      "id": "L14",
+      "timestamp": "2026-09-29T10:00:03.280Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:+97239990300@198.51.100.10:5060 SIP/2.0"
+    },
+    {
+      "id": "L15",
+      "timestamp": "2026-09-29T10:04:12.400Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "INVITE sip:+97239990300@198.51.100.10:5060 SIP/2.0 (re-INVITE, in-dialog) | Call-ID: 91ac3e@198.51.100.10 | P-Asserted-Identity: <sip:2215@203.0.113.60>"
+    },
+    {
+      "id": "L16",
+      "timestamp": "2026-09-29T10:04:12.401Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP offer from Initech PBX: c=IN IP4 203.0.113.60 | m=audio 6200 RTP/AVP 8 101 | o=- 1001 1002 IN IP4 203.0.113.60"
+    },
+    {
+      "id": "L17",
+      "timestamp": "2026-09-29T10:04:12.450Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (re-INVITE)"
+    },
+    {
+      "id": "L18",
+      "timestamp": "2026-09-29T10:04:12.451Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SDP answer to Initech PBX: c=IN IP4 198.51.100.23 | m=audio 26002 RTP/AVP 8 101"
+    },
+    {
+      "id": "L19",
+      "timestamp": "2026-09-29T10:04:12.460Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "FreeSWITCH fs-media-4 (198.51.100.23)",
+      "text": "[DEBUG] sofia.c:7512 sofia/internal/2210@203.0.113.60 re-INVITE processed, codec PCMA unchanged"
+    },
+    {
+      "id": "L20",
+      "timestamp": "2026-09-29T10:04:12.500Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "ACK sip:+97239990300@198.51.100.10:5060 SIP/2.0"
+    },
+    {
+      "id": "L21",
+      "timestamp": "2026-09-29T10:05:00.000Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "FreeSWITCH fs-media-4 (198.51.100.23)",
+      "text": "[INFO] rtp periodic stats (last 60s) leg=agent sending_to=203.0.113.60:5000 rtp_audio_out_packet_count=3000 receiving_from=203.0.113.60:6200 rtp_audio_in_packet_count=2996"
+    },
+    {
+      "id": "L22",
+      "timestamp": "2026-09-29T10:06:30.050Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "BYE sip:+97239990300@198.51.100.10:5060 SIP/2.0 | From: <sip:+972501112233@192.0.2.50> | Reason: Q.850;cause=16"
+    },
+    {
+      "id": "L23",
+      "timestamp": "2026-09-29T10:06:30.070Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "BYE sip:2210@203.0.113.60:5060 SIP/2.0 | Reason: caller hung up"
+    },
+    {
+      "id": "L24",
+      "timestamp": "2026-09-29T10:06:30.090Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (BYE)"
+    },
+    {
+      "id": "L25",
+      "timestamp": "2026-09-29T10:06:30.110Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "homer (edge SBC 198.51.100.10)",
+      "text": "SIP/2.0 200 OK (BYE)"
+    },
+    {
+      "id": "L26",
+      "timestamp": "2026-09-29T10:06:30.130Z",
+      "leg": "caller <-> platform (carrier trunk)",
+      "capture_point": "FreeSWITCH fs-media-4 (198.51.100.23)",
+      "text": "[INFO] rtp stats leg=caller rtp_audio_in_packet_count=19340 rtp_audio_out_packet_count=19338 rtp_audio_in_packet_loss=3 mos=4.39"
+    },
+    {
+      "id": "L27",
+      "timestamp": "2026-09-29T10:06:30.140Z",
+      "leg": "platform <-> Initech PBX (agents)",
+      "capture_point": "FreeSWITCH fs-media-4 (198.51.100.23)",
+      "text": "[INFO] rtp stats leg=agent rtp_audio_in_packet_count=19325 rtp_audio_out_packet_count=19341 rtp_audio_in_packet_loss=2 mos=4.40"
+    }
+  ],
+  "diagnosis": {
+    "observed": "After the 10:04:12 transfer re-INVITE, Initech PBX offered a new media port: 203.0.113.60:6200 (L16). We answered with 198.51.100.23:26002 (L18). At 10:05:00, fs-media-4 was still sending agent-leg RTP to 203.0.113.60:5000, the pre-transfer port. It was receiving from 203.0.113.60:6200, so agent-to-caller audio arrives and is forwarded, which matches the caller hearing the agent. The caller leg shows RTP in both directions with low loss and MOS 4.39. No line shows caller audio sent to port 6200.",
+    "suspected_cause": "Guess: fs-media-4 did not update the agent-leg RTP destination after the transfer re-INVITE and kept sending to old port 5000 instead of 6200.",
+    "owner": "platform",
+    "visibility_ends_at": "fs-media-4 send and receive counters on the agent leg, at 10:05:00. We cannot see whether Initech's PBX received or played the packets sent to port 5000, or what happens inside the PBX after that. We have no capture on the Initech side.",
+    "evidence": [
+      {
+        "line_id": "L8",
+        "quote": "m=audio 5000 RTP/AVP 8 101"
+      },
+      {
+        "line_id": "L16",
+        "quote": "c=IN IP4 203.0.113.60 | m=audio 6200 RTP/AVP 8 101"
+      },
+      {
+        "line_id": "L19",
+        "quote": "re-INVITE processed, codec PCMA unchanged"
+      },
+      {
+        "line_id": "L21",
+        "quote": "sending_to=203.0.113.60:5000 rtp_audio_out_packet_count=3000 receiving_from=203.0.113.60:6200"
+      },
+      {
+        "line_id": "L26",
+        "quote": "rtp_audio_in_packet_count=19340 rtp_audio_out_packet_count=19338"
+      }
+    ],
+    "next_check": "Platform media engineer: on fs-media-4, check why the sofia re-INVITE handling for this call (Call-ID 91ac3e@198.51.100.10) left the RTP remote port at 5000. Look at the switch_rtp remote-address update and any media-bypass or re-INVITE settings. Then repeat a transfer test and confirm the stats show sending_to port 6200.",
+    "missing": [
+      "Any switch_rtp log line at 10:04:12 showing the remote RTP address being updated or refused",
+      "A packet capture on fs-media-4 or the Initech PBX showing where caller audio went after 10:04:12",
+      "The full FreeSWITCH sofia channel variables and SDP handling for the agent leg",
+      "Whether other Initech transfers fail the same way"
+    ],
+    "confidence": "Fairly high. L21 shows a direct mismatch between the send port (5000) and the newest SDP port (6200), and the cause fits the one-way symptom. The re-INVITE log line (L19) mentions only the codec, so the reason the port was not updated is still a guess. There is no NAT problem: the PBX address is public and RTP is received from it."
+  },
+  "score": {
+    "pass": true,
+    "checks": {
+      "owner": "ok",
+      "evidence": "ok",
+      "required": "ok",
+      "forbidden": "ok",
+      "cause": "-"
+    },
+    "reasons": []
+  }
+}

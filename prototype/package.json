@@ -1,0 +1,25 @@
+{
+  "name": "omnitelecom",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "vitest run",
+    "triage": "tsx src/cli.ts",
+    "triage:all": "tsx src/run-all.ts",
+    "show": "tsx src/show.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.129.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}

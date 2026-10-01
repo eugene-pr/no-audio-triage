@@ -1,0 +1,5 @@
+{
+  "owner": "customer side",
+  "required_line_ids": ["L21"],
+  "forbidden_line_ids": []
+}
